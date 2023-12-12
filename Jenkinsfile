@@ -31,14 +31,14 @@ pipeline {
                 }
             }
         }
-/*         stage('Push Image'){
+        stage('Push Image'){
             steps{
                 script{
                     sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 358966077154.dkr.ecr.us-east-1.amazonaws.com'
                     sh 'docker push 358966077154.dkr.ecr.us-east-1.amazonaws.com/geolocation_ecr_rep:latest'
                 }
             }
-        } */
+        }
 /*         stage('K8s Deploy'){
             steps {
                 withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'eks_credential', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
