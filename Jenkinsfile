@@ -31,5 +31,12 @@ pipeline {
                 }
             }
         }
+        stage('Push Image'){
+            steps{
+                script{
+                    sh 'docker push 358966077154.dkr.ecr.us-east-1.amazonaws.com/geoloc_ecr_rep:latest'
+                }
+            }
+        }
     }
 }
