@@ -5,7 +5,7 @@ pipeline {
     }
     environment {
         registry = '358966077154.dkr.ecr.us-east-1.amazonaws.com/geoloc_ecr_rep'
-        registryCredential = 'ecr:us-east-1:awscreds'
+        //registryCredential = 'ecr:us-east-1:awscreds'
         dockerimage = ''
     }
     stages {
@@ -41,7 +41,7 @@ pipeline {
         }
         stage('K8s Deploy'){
             steps{
-                withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'eks_credential', namespace: '', serverUrl: '') {
+                withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'eks_credential', namespace: '', serverUrl: '') 
                 sh "kubectl apply -f eks-deploy-from-ecr.yaml"
             }
         }
