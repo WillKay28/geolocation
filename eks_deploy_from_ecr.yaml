@@ -1,7 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: geoloc-ecr-eks-deploy
+  labels:
+    app: geoloc-ecr-eks-app
+  name: geoloc-ecr-eks-app
 spec:
   replicas: 3
   selector:
@@ -13,7 +15,7 @@ spec:
         app: geoloc-ecr-eks-app
     spec:
       containers:
-      - name: geoloc-ecr-eks-app
+      - name: my-geoloc-ecr-eks-app
         image: 358966077154.dkr.ecr.us-east-1.amazonaws.com/geoloc_ecr_rep:latest
         imagePullPolicy: Always
         ports:
