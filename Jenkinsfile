@@ -5,7 +5,7 @@ pipeline {
     }
     environment {
         registry = '358966077154.dkr.ecr.us-east-1.amazonaws.com/geoloc_ecr_rep'
-        registryCredential = 'jenkins-ecr'
+        registryCredential = 'ecr:us-east-1:awscreds'
         dockerimage = ''
     }
     stages {
@@ -24,12 +24,12 @@ pipeline {
                 sh 'mvn test'
             }
         }
-        stage('Image Build'){
+        /* stage('Image Build'){
             steps{
                 script{
                     dockerImage = docker.build registry + ":${env.BUILD_NUMBER}"
                 }
             }
-        }
+        } */
     }
 }
