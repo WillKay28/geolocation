@@ -41,11 +41,14 @@ pipeline {
         }
         stage('K8s Deploy'){
             steps {
-                withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'eks_credential', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
-                    sh "kubectl apply -f eks_deploy_from_ecr.yaml"
+                //withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'eks_credential', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
+                //    sh "kubectl apply -f eks_deploy_from_ecr.yaml"
+                withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'ekscred-jan21-2024', namespace: 'geo', restrictKubeConfigAccess: false, serverUrl: '') {
+                       sh "kubectl apply -f eks_deploy_from_ecr.yaml"
+                    }
                 }
             }
         }
     }
-}
+//}
 //end
